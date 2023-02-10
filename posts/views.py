@@ -7,7 +7,7 @@ from django.http import JsonResponse
 from django.http import HttpResponseRedirect
 
 from .forms import AddPostForm
-from .models import PostsTable, LikesTable, CommentsTable
+from .models import PostsTable, LikesTable, CommentsTable, RetweetTable
 
 
 @login_required(redirect_field_name='main_page')
@@ -65,3 +65,25 @@ def comment_post(request):
             comment_obj = CommentsTable.objects.create(parent_id=post_parent, child_id=post_obj)
             comment_obj.save()
     return redirect('post_detail', pk=request.POST.get('submit'))
+
+@login_required()
+def retweet_post(request):
+    if request.method == 'POST':
+        post_form = AddPostForm(request.POST, request.FILES)
+        # button submit for getting parent id not optimal as it can be changed by user
+        parent_id = request.POST.get('submit', None)
+        if parent_id is None:
+            raise ValueError
+
+        if post_form.is_valid():
+            post_obj = post_form.save(commit=False)
+            post_obj.user_id = request.user
+            post_obj.primary = True
+            post_obj.save()
+            post_parent = PostsTable.objects.get(pk=parent_id)
+            post_parent.shares += 1
+            post_parent.save()
+            retweet_obj = RetweetTable.objects.create(retweet_parent_id=post_parent,
+                                                      retweet_child_id=post_obj)
+            retweet_obj.save()
+    return redirect('main_page')

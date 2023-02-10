@@ -1,0 +1,6 @@
+{% extends 'compontents/medium/post-sub.html' %}
+{% block post_sub_media %}
+    {% with content=retweet content_user=retweet_user %}
+        {% include 'components/medium/post-retweet' %}
+    {% endwith %}
+{% endblock %}

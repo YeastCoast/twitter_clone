@@ -4,12 +4,14 @@ from django.shortcuts import render, redirect, reverse
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, DetailView, ListView
 
-from posts.models import PostsTable, LikesTable, CommentsTable
+from posts.models import PostsTable, LikesTable, CommentsTable, RetweetTable
 
 
 def popular_posts():
     posts = PostsTable.objects.filter(primary=True).select_related('user_id').order_by('-post_date')
     context_feed = [{'content': i, 'content_user': i.user_id} for i in posts]
+    print(dir(context_feed[0].get('content')))
+    print(context_feed[0].get('content').retweet_child_id)
     return context_feed
 
 
@@ -43,6 +45,9 @@ class UserPostDetailView(DetailView):
     template_name = "components/pages/content-detail.html"
 
     def get_context_data(self, **kwargs):
+        obj = self.object
+        obj.views = obj.views + 1
+        obj.save()
         context = super(UserPostDetailView, self).get_context_data(**kwargs)
         comments = CommentsTable.objects.filter(parent_id=self.object.pk)
         comments = [i.child_id for i in comments]
@@ -55,10 +60,20 @@ class UserPostDetailView(DetailView):
         context['liked'] = liked
         return context
 
-
 class UserSearchView(TemplateView):
     template_name = "components/pages/user/search.html"
 
 
 class TestView(TemplateView):
     template_name = "components/pages/index.html"
+
+
+class UserProfileView(DetailView):
+    model = User
+    template_name = 'components/pages/user-page.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(UserProfileView, self).get_context_data(**kwargs)
+        posts = PostsTable.objects.filter(user_id=context.get('user').id)
+        context['content_list'] = posts
+        return context

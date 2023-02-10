@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import MainPageView, SettingsPageView, UserMainPage, UserPostDetailView, UserSearchView, TestView
+from .views import MainPageView, SettingsPageView, UserMainPage, UserPostDetailView, UserSearchView, TestView, UserProfileView
 from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
@@ -30,4 +30,5 @@ urlpatterns = [
     path("__reload__/", include("django_browser_reload.urls")),
     path('home/search', login_required(UserSearchView.as_view(), login_url='main_page'), name='user_search'),
     path('test/', TestView.as_view(), name='testing'),
+    path('profile/<int:pk>/', UserProfileView.as_view(), name='user_profile'),
 ]

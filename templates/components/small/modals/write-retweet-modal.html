@@ -1,0 +1,18 @@
+{% extends 'components/atomic/modal-template.html' %}
+
+{% block modal_open %}
+    <button class="modal-open btn-5 insideLink">
+        <ion-icon name="swap-vertical-outline"></ion-icon>
+    </button>
+{% endblock %}
+
+{% block modal_content_body %}
+    {% if user.is_authenticated %}
+        {% include 'components/atomic/forms/write-reply-form.html' %}
+    {% else %}
+        <p>Login first</p>
+    {% endif %}
+{% endblock %}
+
+{% block modal_content_footer %}
+{% endblock %}

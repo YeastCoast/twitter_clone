@@ -17,7 +17,11 @@
         <section>
             <span>{{ content.content }}</span>
         </section>
-        <section> <!-- media content --> </section>
+        <section>
+            <!-- media content -->
+            {% block post_sub_media %}
+            {% endblock %}
+        </section>
         <footer>
             {% include 'components/small/content/socials-bar-sub.html' %}
         </footer>

@@ -5,8 +5,8 @@
                 <!--user image <img>-->
                 <ion-icon class="content-sub-profile" name="person-circle-outline"></ion-icon>
                 <div class="content-main-userinfo">
-                    <a>{{ content_user.username }}</a>
-                    <a>@{{ content_user.username }}</a>
+                    <a href="{% url 'user_profile' pk=content_user.id %}">{{ content_user.username }}</a>
+                    <a href="{% url 'user_profile' pk=content_user.id %}">@{{ content_user.username }}</a>
                 </div>
             </div>
             <div>
@@ -26,7 +26,7 @@
         <section>
             <time>{{ content.post_date }}</time>
             <span>.</span>
-            <span>{{ content.views }}</span>
+            <span>{{ content.views }} View{{ content.comments|pluralize:",s" }}</span>
         </section>
         <section class="content-main-stats">
             <a>Share{{ content.shares|pluralize:",s" }}
