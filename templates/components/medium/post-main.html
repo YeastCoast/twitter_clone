@@ -22,6 +22,11 @@
         </section>
         <section>
             <!-- media content -->
+            {% if retweet %}
+                {% with content=retweet content_user=retweet_user %}
+                    {% include 'components/medium/post-retweet.html' %}
+                {% endwith %}
+            {% endif %}
         </section>
         <section>
             <time>{{ content.post_date }}</time>

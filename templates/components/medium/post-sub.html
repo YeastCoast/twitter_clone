@@ -6,8 +6,8 @@
     <div class="content-sub-main">
         <header class="content-sub-header">
             <div class="content-sub-userinfo">
-                <a class="content-sub-username insideLink">{{ content_user.username }}</a>
-                <a class="content-sub-usertag insideLink">@{{ content_user.username }}</a>
+                <a class="content-sub-username insideLink" href="{% url 'user_profile' pk=content_user.id %}">{{ content_user.username }}</a>
+                <a class="content-sub-usertag insideLink" href="{% url 'user_profile' pk=content_user.id %}">@{{ content_user.username }}</a>
                 <time class="content-sub-time">{{ content.post_date }}</time>
             </div>
             <a class="btn-1 insideLink">
@@ -19,8 +19,11 @@
         </section>
         <section>
             <!-- media content -->
-            {% block post_sub_media %}
-            {% endblock %}
+            {% if retweet %}
+                {% with content=retweet content_user=retweet_user %}
+                    {% include 'components/medium/post-retweet.html' %}
+                {% endwith %}
+            {% endif %}
         </section>
         <footer>
             {% include 'components/small/content/socials-bar-sub.html' %}

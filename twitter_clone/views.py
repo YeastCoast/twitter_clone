@@ -4,14 +4,17 @@ from django.shortcuts import render, redirect, reverse
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, DetailView, ListView
 
-from posts.models import PostsTable, LikesTable, CommentsTable, RetweetTable
+from posts.models import PostsTable, LikesTable, CommentsTable
 
 
 def popular_posts():
     posts = PostsTable.objects.filter(primary=True).select_related('user_id').order_by('-post_date')
-    context_feed = [{'content': i, 'content_user': i.user_id} for i in posts]
-    print(dir(context_feed[0].get('content')))
-    print(context_feed[0].get('content').retweet_child_id)
+    context_feed = [{'content': i,
+                     'content_user': i.user_id,
+                     'retweet': i.retweet_id,
+                     'retweet_user': i.retweet_id.user_id if 'user_id' in dir(i.retweet_id) else None,
+                     }
+                    for i in posts]
     return context_feed
 
 
@@ -58,7 +61,10 @@ class UserPostDetailView(DetailView):
             liked = None
         context['commentstable_set'] = sorted(comments, key=lambda x: x.post_date, reverse=True)
         context['liked'] = liked
+        context['retweet'] = self.object.retweet_id
+        context['retweet_user'] = self.object.retweet_id.user_id if self.object.retweet_id else None
         return context
+
 
 class UserSearchView(TemplateView):
     template_name = "components/pages/user/search.html"

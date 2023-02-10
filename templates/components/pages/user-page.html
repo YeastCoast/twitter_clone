@@ -13,7 +13,9 @@
     <section class="content-main">
         {% include 'components/medium/user-profile.html' %}
         {% for content in content_list %}
-            {% include 'components/medium/post-sub.html' %}
+            {% with content_user=user %}
+                {% include 'components/medium/post-sub.html' %}
+            {% endwith %}
         {% endfor %}
     </section>
 {% endblock %}

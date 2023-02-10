@@ -1,5 +1,5 @@
 {% for content_dict in content_list %}
-    {% with content=content_dict.content content_user=content_dict.content_user %}
+    {% with content=content_dict.content content_user=content_dict.content_user retweet=content_dict.retweet retweet_user=content_dict.retweet_user %}
         {% include 'components/medium/post-sub.html' %}
     {% endwith %}
 {% endfor %}

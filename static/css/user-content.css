@@ -90,3 +90,7 @@
     display: flex;
     gap: 20px;
 }
+
+.retweet:hover {
+    background-color: #f3f3f3;
+}

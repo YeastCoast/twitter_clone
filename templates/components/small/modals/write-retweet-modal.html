@@ -1,14 +1,14 @@
 {% extends 'components/atomic/modal-template.html' %}
-
 {% block modal_open %}
     <button class="modal-open btn-5 insideLink">
         <ion-icon name="swap-vertical-outline"></ion-icon>
+        <span class="counter">{{ content.shares }}</span>
     </button>
 {% endblock %}
 
 {% block modal_content_body %}
     {% if user.is_authenticated %}
-        {% include 'components/atomic/forms/write-reply-form.html' %}
+        {% include 'components/atomic/forms/write-retweet-form.html' %}
     {% else %}
         <p>Login first</p>
     {% endif %}

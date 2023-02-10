@@ -1,5 +1,5 @@
 {% with content=retweet content_user=retweet_user %}
-    <article class="user-content-sub" onclick="location.href='{% url 'post_detail' pk=content.id %}'">
+    <article class="user-content-sub insideLink retweet" onclick="location.href='{% url 'post_detail' pk=content.id %}'">
         <div class="content-sub-profile insideLink">
             <!--user image <img>-->
             <ion-icon name="person-circle-outline"></ion-icon>
@@ -11,9 +11,6 @@
                     <a class="content-sub-usertag insideLink">@{{ content_user.username }}</a>
                     <time class="content-sub-time">{{ content.post_date }}</time>
                 </div>
-                <a class="btn-1 insideLink">
-                    <ion-icon name="settings-outline"></ion-icon>
-                </a>
             </header>
             <section>
                 <span>{{ content.content }}</span>
