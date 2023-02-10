@@ -45,7 +45,6 @@
      with content-option[data-contentnumber]=content-option-button[data-linkto] -->
 <script>
     let options = document.getElementsByClassName('content-option-wrapper');
-    console.log(options);
     var sheet = window.document.styleSheets[0];
     sheet.insertRule('.content-option { display: none; }', sheet.cssRules.length);
     sheet.insertRule('.content-option-wrapper .active { display: flex; }', sheet.cssRules.length);
@@ -53,8 +52,6 @@
         var option = options[i];
         var contents = option.getElementsByClassName('content-option');
         var btns = option.querySelectorAll('[data-linkto]');
-        console.log(btns);
-        console.log(btns.length);
         for (let j = 0; j < btns.length; j++) {
             btns[j].addEventListener("click", () => {
                 for (let k = 0; k < contents.length; k++) {
@@ -94,7 +91,6 @@
             event.stopPropagation());
 
         window.onclick = function (event) {
-            console.log(event.target)
             if (event.target.classList.contains('modal-content')) {
                 event.target.close();
             }
@@ -105,7 +101,53 @@
 
 <script>
     $('.insideLink').click(function (event) {
-        event.stopImmediatePropagation();
+        event.stopPropagation();
+    });
+</script>
+
+<!-- script for processing likes -->
+
+<script>
+    var elements = document.getElementsByClassName("like");
+    var likeSwitch = function () {
+        var attribute = this.id;
+        var x = document.getElementById(attribute);
+        var y = x.children;
+        for (let i = 0; i < y.length - 1; i++) {
+            if (y[i].classList.contains('active')) {
+                y[i].className = y[i].className.replace(' active', '').replace('active', '')
+                if (y[i].id.includes('up-')) {
+                    y[2].textContent = Number(y[2].textContent) - 1;
+                } else {
+                    y[2].textContent = Number(y[2].textContent) + 1;
+                }
+            } else {
+                y[i].className += ' active'
+            }
+        }
+    };
+
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].addEventListener('click', likeSwitch, false);
+    }
+</script>
+
+<script>
+    $(".like").click(function () {
+        console.log('like')
+        $.post("{% url 'posts:like_post' %}",
+            {
+                post_like: this.value,
+                csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value
+            },
+        )
+    });
+</script>
+
+<!-- script for fading animation while page load: IN PROGRESS -->
+<script>
+    $(document).ready(function () {
+        $("body").fadeIn("fast");
     });
 </script>
 

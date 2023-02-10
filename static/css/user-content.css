@@ -85,3 +85,8 @@
     height: 40px;
 }
 
+
+.content-main-stats {
+    display: flex;
+    gap: 20px;
+}

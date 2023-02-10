@@ -29,7 +29,6 @@ def like_post(request):
     if request.method == 'POST':
         post_id = request.POST.get('post_like')
         post_form = PostsTable.objects.get(pk=post_id)
-
         # update like count
         if LikesTable.objects.filter(user_id=request.user, post_id=post_form).exists():
             post_form.likes -= 1

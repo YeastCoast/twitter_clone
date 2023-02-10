@@ -24,10 +24,10 @@ urlpatterns = [
     path('settings/', SettingsPageView.as_view(), name='settings_page'),
     path("accounts/", include("accounts.urls")),
     path("accounts/", include("django.contrib.auth.urls")),
-    path('home/', login_required(UserMainPage.as_view(), redirect_field_name='main_page'), name='user_main_page'),
+    path('home/', login_required(UserMainPage.as_view(), login_url='main_page'), name='user_main_page'),
     path('posts/', include('posts.urls')),
     path('post/<int:pk>/', UserPostDetailView.as_view(), name='post_detail'),
     path("__reload__/", include("django_browser_reload.urls")),
-    path('home/search', login_required(UserSearchView.as_view()), name='user_search'),
+    path('home/search', login_required(UserSearchView.as_view(), login_url='main_page'), name='user_search'),
     path('test/', TestView.as_view(), name='testing'),
 ]

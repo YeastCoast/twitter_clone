@@ -25,7 +25,7 @@ class MainPageView(TemplateView):
 
 
 class SettingsPageView(TemplateView):
-    template_name = "settings.html"
+    template_name = "components/pages/settings.html"
 
 
 class UserMainPage(TemplateView):
@@ -46,7 +46,7 @@ class UserPostDetailView(DetailView):
         context = super(UserPostDetailView, self).get_context_data(**kwargs)
         comments = CommentsTable.objects.filter(parent_id=self.object.pk)
         comments = [i.child_id for i in comments]
-        if authenticate(self.request.user):
+        if self.request.user.is_authenticated:
             liked = LikesTable.objects.filter(user_id=self.request.user)
             liked = [i['post_id_id'] for i in liked.values()]
         else:
@@ -57,7 +57,7 @@ class UserPostDetailView(DetailView):
 
 
 class UserSearchView(TemplateView):
-    template_name = "user-main/user-search-tab.html"
+    template_name = "components/pages/user/search.html"
 
 
 class TestView(TemplateView):

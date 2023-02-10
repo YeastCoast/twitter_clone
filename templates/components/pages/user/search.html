@@ -1,0 +1,14 @@
+{% extends 'components/pages/base.html' %}
+
+{% block navbar %}
+    {% include 'components/small/navbar/user-navbar.html' %}
+{% endblock %}
+
+{% block main %}
+    <header id="searchbar-main">
+        {% include 'components/small/searchbar.html' %}
+    </header>
+    <section class="content-main">
+        {% include 'components/large/content-feed.html' %}
+    </section>
+{% endblock %}
