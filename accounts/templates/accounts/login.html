@@ -1,0 +1,12 @@
+<div class="signup-form">
+    <div>
+        <h1>Login</h1>
+    </div>
+    <form action="{% url 'accounts:login' %}" method="post">
+    {% csrf_token %}
+    {{ login_form.as_p }}
+    <button type="submit">Login</button>
+  </form>
+    <button onclick="modalChange('modal-password-reset', 'modal-wrapper-login')">Forgot password?</button>
+    <button onclick="modalChange('modal-register', 'modal-wrapper-login')">Register</button>
+</div>

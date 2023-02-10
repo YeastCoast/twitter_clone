@@ -1,0 +1,50 @@
+{% with object as content %}
+<article class="user-content-main">
+    <header class="content-main-header">
+        <div class="content-main-user-wrapper">
+            <!--user image <img>-->
+            <ion-icon class="content-sub-profile" name="person-circle-outline"></ion-icon>
+            <div class="content-main-userinfo">
+                <a>{{ user.username }}</a>
+                <a>@{{ user.username }}</a>
+            </div>
+        </div>
+        <div>
+            <a class="btn-1">
+                <ion-icon name="settings-outline"></ion-icon>
+            </a>
+        </div>
+    </header>
+    <section>
+        <span>
+            {{ content.content }}
+        </span>
+    </section>
+    <section>
+        <!-- media content -->
+    </section>
+    <section>
+        <time>{{ content.post_date }}</time>
+        <span>.</span>
+        <span>{{ content.views }}</span>
+    </section>
+    <section>
+        <a>Share{{ content.shares|pluralize:",s" }}
+        <span>{{ content.shares }}</span>
+        </a>
+        <a>Comment{{ content.comments|pluralize:",s" }}
+        <span>{{ content.comments }}</span>
+        </a>
+        <a>Like{{ content.likes|pluralize:",s" }}
+        <span>{{ content.likes }}</span>
+        </a>
+    </section>
+    <footer>
+        {% include 'components/small/content/socials-bar-main.html' %}
+    </footer>
+</article>
+{% endwith %}
+
+{% for content in commentstable_set %}
+    {% include 'components/medium/post-sub.html' %}
+{% endfor %}

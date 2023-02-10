@@ -1,0 +1,53 @@
+.detail-post-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding: 14px;
+    gap: 20px;
+}
+
+.detail-post-section {
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 auto;
+    gap: 20px;
+    padding: 0 14px 14px 14px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.detail-post-header {
+    flex: 0 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+}
+
+.detail-post-user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.detail-post-user-info {
+    display: flex;
+    gap: 14px;
+}
+
+.detail-post-user-name {
+}
+
+.profile-image {
+    margin: auto auto;
+}
+
+.detail-post-header span {
+    font-size: 20px;
+}
+
+.detail-comment-section {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+
+}

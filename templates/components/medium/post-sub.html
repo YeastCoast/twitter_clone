@@ -1,0 +1,26 @@
+<article class="user-content-sub" onclick="location.href='{% url 'post_detail' pk=content.id %}'">
+    <div class="content-sub-profile insideLink">
+        <!--user image <img>-->
+        <ion-icon name="person-circle-outline"></ion-icon>
+    </div>
+    <div class="content-sub-main">
+        <header class="content-sub-header">
+            <div class="content-sub-userinfo">
+                <a class="content-sub-username insideLink">{{ content_user.username }}</a>
+                <a class="content-sub-usertag insideLink">@{{ content_user.username }}</a>
+                <time class="content-sub-time">{{ content.post_date }}</time>
+            </div>
+            <a class="btn-1 insideLink">
+                <ion-icon name="settings-outline"></ion-icon>
+            </a>
+        </header>
+        <section>
+            <span>{{ content.content }}</span>
+        </section>
+        <section> <!-- media content --> </section>
+        <footer>
+            {% include 'components/small/content/socials-bar-sub.html' %}
+        </footer>
+    </div>
+</article>
+

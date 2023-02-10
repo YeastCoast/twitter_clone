@@ -1,0 +1,5 @@
+{% url 'posts:add_post' as url %}
+
+<a class="{% if request.path == url %}active{% endif %}" href="#">
+    {% include 'components/small/modals/write-post-modal.html' %}
+</a>

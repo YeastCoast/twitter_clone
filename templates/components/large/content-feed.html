@@ -1,0 +1,5 @@
+{% for content_dict in content_list %}
+    {% with content=content_dict.content content_user=content_dict.content_user %}
+        {% include 'components/medium/post-sub.html' %}
+    {% endwith %}
+{% endfor %}

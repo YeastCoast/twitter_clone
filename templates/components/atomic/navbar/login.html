@@ -1,0 +1,14 @@
+{% extends 'components/atomic/modal-template.html' %}
+
+{% block modal_open %}
+    <button class="modal-open btn-1">
+        <ion-icon name="log-in-outline" class="icon"></ion-icon>
+    </button>
+{% endblock %}
+
+{% block modal_content_body %}
+    {% include 'components/atomic/forms/account-popup.html' %}
+{% endblock %}
+
+{% block modal_content_footer %}
+{% endblock %}

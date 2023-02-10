@@ -1,0 +1,11 @@
+<div data-contentnumber="register" class="content-option account-popup">
+    <div>
+        <h1>Register</h1>
+    </div>
+    <form class="account-form" action="{% url 'accounts:register' %}" method="post">
+        {% csrf_token %}
+        {{ register_form.as_p }}
+        <button class="login-btn btn-3" type="submit">Register</button>
+        <button data-linkto="login" class="content-option-button btn-4 login-btn">Login</button>
+    </form>
+</div>

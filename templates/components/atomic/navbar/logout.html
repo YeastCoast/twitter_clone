@@ -1,0 +1,6 @@
+{% url 'accounts:logout' as url %}
+
+    <a class="nav-btn {% if request.path == url %}active{% endif %}" href="{{ url }}">
+        <ion-icon name="log-out-outline"></ion-icon>
+        <p>Logout</p>
+    </a>

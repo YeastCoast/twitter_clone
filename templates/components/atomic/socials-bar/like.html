@@ -1,0 +1,7 @@
+<button id="like-{{ content.id }}" class="like btn-5 insideLink" type="submit" value="{{ content.id }}">
+    <ion-icon id="up-liked-{{ content.id }}" class="icon-switch{% if content.id in liked %}active{% endif %}"
+              name="heart"></ion-icon>
+    <ion-icon id="down-liked-{{ content.id }}" class="{% if not user.is_authenticated %}active{% endif %}"
+              name="heart-outline"></ion-icon>
+    <span class="counter">{{ content.likes }}</span>
+</button>

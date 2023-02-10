@@ -1,0 +1,18 @@
+{% load static %}
+
+<div id="modal-wrapper-login" class="modal-wrapper">
+    <div class="modal-header">
+        <ion-icon id="close-login" class="close standard-btn" name="close-outline" style="font-size: 32px; padding: 6px;"></ion-icon>
+        <img src="{% static 'images/logo.png' %}" style="width: 50px; height: 50px">
+        <ion-icon name="close-outline" style="visibility: hidden; width: 44px"></ion-icon>
+    </div>
+    <div id="modal-login" class="modal-option active">
+        {% include 'accounts/login.html' %}
+    </div>
+    <div id="modal-register" class="modal-option">
+        {% include 'accounts/register.html' %}
+    </div>
+    <div id="modal-password-reset" class="modal-option">
+        {% include 'accounts/password-reset.html' %}
+    </div>
+</div>

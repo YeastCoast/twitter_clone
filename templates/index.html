@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+    {% include 'navbar/navbars/main-navbar.html' %}
+{% endblock %}
+
+{% block main %}
+    <div class="searchbar-container">
+        {% include 'searchbar.html' %}
+        <a id="login-btn">
+            <ion-icon name="log-in-outline" class="icon" style="font-size: 24px"></ion-icon>
+        </a>
+    </div>
+    <div id="signup-modal" class="modal">
+        <div class="signup-popup">
+            {% include 'accounts/modal-wrapper.html' %}
+        </div>
+    </div>
+    {% block extend_index %}
+        {% for post in posts %}
+            <p>post</p>
+            {% include 'user-main/user-post.html' %}
+        {% endfor %}
+    {% endblock %}
+{% endblock %}
+
+
+{% block endpage %}
+    <script>
+        modalOpen('login-btn', 'close-login', 'signup-modal')
+    </script>
+{% endblock %}

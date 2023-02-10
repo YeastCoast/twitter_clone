@@ -1,0 +1,13 @@
+{% load static %}
+
+<div class="signup-form">
+    <div>
+        <h1>Register</h1>
+    </div>
+    <form action="{% url 'accounts:register' %}" method="post">
+    {% csrf_token %}
+    {{ register_form.as_p }}
+    <button type="submit">Register</button>
+  </form>
+    <button onclick="modalChange('modal-login', 'modal-wrapper-login')">Login</button>
+</div>

@@ -1,0 +1,6 @@
+{% url 'user_search' as url %}
+
+<a class="{% if request.path == url %}active{% endif %} nav-btn" href="{{ url }}">
+    <ion-icon name="search-outline"></ion-icon>
+    <p>Discover</p>
+</a>

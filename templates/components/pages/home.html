@@ -1,0 +1,15 @@
+{% extends 'components/pages/base.html' %}
+
+{% block navbar %}
+    {% include 'components/small/navbar/user-navbar.html' %}
+{% endblock %}
+
+{% block main %}
+    {% include 'components/small/headers/header-user-home.html' %}
+    <section class="content-main">
+        <div id="user-post-wrapper">
+            {% include 'components/atomic/forms/write-post-form.html' %}
+        </div>
+        {% include 'components/large/content-feed.html' %}
+    </section>
+{% endblock %}

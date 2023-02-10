@@ -1,0 +1,9 @@
+<button id="user-comment-{{ post.id }}" class="insideLink">
+    <ion-icon name="chatbubble-outline"></ion-icon>
+    <span class="counter">{{ post.comments }}</span>
+</button>
+<div id="comment-modal-{{ post.id }}" class="modal">
+    <div class="popup">
+        {% include 'user-main/modal-comments.html' %}
+    </div>
+</div>

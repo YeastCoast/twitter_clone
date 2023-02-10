@@ -1,0 +1,22 @@
+<li>
+    <a id="write-icon" href="#">
+        <ion-icon name="add-circle-outline"></ion-icon>
+        <p>Tweet</p>
+    </a>
+    <div id="write-post-modal" class="modal">
+        <div class="popup">
+            <div class="modal-wrapper">
+                <div class="modal-header">
+                    <ion-icon id="close-write-icon" class="close" name="close-outline"
+                              style="font-size: 32px; padding: 6px;"></ion-icon>
+                    <ion-icon name="close-outline" style="visibility: hidden; width: 44px"></ion-icon>
+                </div>
+                {% include 'user-main/user-write.html' %}
+            </div>
+        </div>
+    </div>
+    <script>
+        modalOpen('write-icon', 'close-write-icon', 'write-post-modal')
+    </script>
+
+</li>

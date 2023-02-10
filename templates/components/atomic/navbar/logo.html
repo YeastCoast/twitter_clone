@@ -1,0 +1,6 @@
+{% load static %}
+{% url 'user_main_page' as url %}
+
+<a id="logo-btn" href="{{ url }}" class="nav-btn">
+    <img src="{% static 'images/logo.png' %}" style="width: 34px; height: 34px">
+</a>

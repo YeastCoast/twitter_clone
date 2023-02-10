@@ -1,0 +1,8 @@
+<form action="{% url 'posts:add_post' %}" id="user-write-form" method="post">
+    {% csrf_token %}
+    <div class="input-wrapper">
+                <textarea id="user-write-textarea" placeholder="What's new" name="content"
+                          contenteditable></textarea>
+    </div>
+    <button type="submit">Tweet</button>
+</form>

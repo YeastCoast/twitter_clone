@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/modal-template.css">
+    <link rel="stylesheet" href="/static/css/write-post.css">
+    <link rel="stylesheet" href="/static/css/account-popup.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+{% include 'components/atomic/navbar/login.html' %}
+{% include 'components/atomic/navbar/write.html' %}
+
+
+<script>
+    let modals = document.getElementsByClassName('modal-wrapper');
+    for (let i = 0; i < modals.length; i++) {
+        var modal = modals[i];
+        var btn_open = modals[i].getElementsByClassName('modal-open')[0];
+        var btn_close = modals[i].getElementsByClassName('modal-close')[0];
+        var modal_content = modals[i].getElementsByClassName('modal-content')[0];
+        var modal_block = modals[i].getElementsByClassName('modal-block')[0];
+        btn_open.addEventListener("click", (event) => {
+            var modal_content = event.target.closest('.modal-wrapper').getElementsByClassName('modal-content')[0];
+            modal_content.showModal();
+        })
+        btn_close.addEventListener("click", (event) => {
+            var modal_content = event.target.closest('.modal-content');
+            modal_content.close();
+        })
+        modal_block.addEventListener("click", (event) =>
+            event.stopPropagation());
+
+        window.onclick = function (event) {
+            console.log(event.target)
+            if (event.target.classList.contains('modal-content')) {
+                event.target.close();
+            }
+        }
+    }
+
+</script>
+
+<script>
+    let options = document.getElementsByClassName('content-option-wrapper');
+    console.log(options);
+    var sheet = window.document.styleSheets[0];
+    sheet.insertRule('.content-option { display: none; }', sheet.cssRules.length);
+    sheet.insertRule('.content-option-wrapper .active { display: flex; }', sheet.cssRules.length);
+    for (let i = 0; i < options.length; i++) {
+        var option = options[i];
+        var contents = option.getElementsByClassName('content-option');
+        var btns = option.querySelectorAll('[data-linkto]');
+        console.log(btns);
+        console.log(btns.length);
+        for (let j = 0; j < btns.length; j++) {
+            btns[j].addEventListener("click", () => {
+                for (let k = 0; k < contents.length; k++) {
+                    contents[k].className = contents[k].className.replace(" active", "").replace("active", "")
+                }
+                for (let k = 0; k < btns.length; k++) {
+                    btns[k].className = btns[k].className.replace(" active", "").replace("active", "")
+                }
+                btns[j].className += ' active'
+                var linkto = btns[j].dataset.linkto;
+                var target_option = option.querySelector(`[data-contentnumber=${CSS.escape(linkto)}]`);
+                target_option.className += ' active'
+            })
+        }
+    }
+
+</script>
+</body>
+</html>

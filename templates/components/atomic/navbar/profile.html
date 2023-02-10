@@ -1,0 +1,6 @@
+{% url 'profile_placeholder' as url %}
+
+<a class="{% if request.path == url %}active{% endif %} nav-btn" href="{{ url }}">
+    <ion-icon name="person-outline"></ion-icon>
+    <p>Profile</p>
+</a>

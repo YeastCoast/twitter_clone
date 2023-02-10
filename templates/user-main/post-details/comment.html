@@ -1,0 +1,22 @@
+<div class="post-wrapper">
+    <a href="{% url 'post_detail' pk=post.id %}">
+        <span class="post-link"></span>
+    </a>
+    <div class="post-user">
+        <div style="width: 40px; height: 40px; background-color: #ee1717"></div>
+    </div>
+    <div class="post-content-wrapper">
+        <div class="post-content-header">
+            {% include 'user-main/post-components/user-bar.html' %}
+        </div>
+        <div class="post-content-text">
+            <p>{{ post.child_id.content }}</p>
+        </div>
+        <div class="post-content-media">
+
+        </div>
+        <div class="post-content-social">
+            {% include 'user-main/post-components/social-bar.html' %}
+        </div>
+    </div>
+</div>

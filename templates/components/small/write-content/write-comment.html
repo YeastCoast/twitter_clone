@@ -1,0 +1,8 @@
+<form action="{% url 'posts:comment_post' %}" id="user-write-form" method="post">
+    {% csrf_token %}
+    <div class="input-wrapper">
+                <textarea id="user-write-textarea" placeholder="Reply" name="content"
+                          contenteditable></textarea>
+    </div>
+    <button type="submit">Reply</button>
+</form>

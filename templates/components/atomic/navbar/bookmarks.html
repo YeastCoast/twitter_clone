@@ -1,0 +1,8 @@
+{% with url='bookmark_test' %}
+
+    <a class="nav-btn {% if request.path == url %}active{% endif %}" href={{ url }}>
+        <ion-icon name="bookmark-outline"></ion-icon>
+        <p>Bookmarks</p>
+    </a>
+
+{% endwith %}

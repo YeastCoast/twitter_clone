@@ -1,0 +1,30 @@
+<div class="social-bar">
+    <button id="user-comment-{{ post.id }}">
+        <ion-icon name="chatbubble-outline"></ion-icon>
+        <span class="counter">{{ post.comments }}</span>
+    </button>
+    <div id="comment-modal-{{ post.id }}" class="modal">
+        <div class="popup">
+            {% include 'user-main/modal-comments.html' %}
+        </div>
+    </div>
+    <script>
+        modalOpen('user-comment-{{ post.id }}', 'close-comment-{{ post.id }}', 'comment-modal-{{ post.id }}')
+    </script>
+    <button>
+        <ion-icon name="swap-vertical-outline"></ion-icon>
+    </button>
+    <button id="like-{{ post.id }}" class="like" type="submit" value="{{ post.id }}">
+        <ion-icon id="up-liked-{{ post.id }}" class="{% if post.id in liked %}active{% endif %}"
+                  name="heart"></ion-icon>
+        <ion-icon id="down-liked-{{ post.id }}" class="{% if post.id not in liked %}active{% endif %}"
+                  name="heart-outline"></ion-icon>
+        <span class="counter">{{ post.likes }}</span>
+    </button>
+    <button>
+        <ion-icon name="stats-chart-outline"></ion-icon>
+    </button>
+    <button>
+        <ion-icon name="share-social-outline"></ion-icon>
+    </button>
+</div>

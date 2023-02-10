@@ -1,0 +1,19 @@
+<div class="modal-wrapper">
+    {% block modal_open %}
+    {% endblock %}
+    <dialog class="modal-content">
+        <div class="modal-block">
+            <header>
+                <button class="modal-close ion-icon-wrapper btn-1">
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+                {% block modal_content_header %}
+                {% endblock %}
+            </header>
+            {% block modal_content_body %}
+            {% endblock %}
+            {% block modal_content_footer %}
+            {% endblock %}
+        </div>
+    </dialog>
+</div>

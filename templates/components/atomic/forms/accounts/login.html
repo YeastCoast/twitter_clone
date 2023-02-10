@@ -1,0 +1,12 @@
+<div data-contentnumber="login" class="content-option account-popup active">
+    <div>
+        <h1>Login</h1>
+    </div>
+    <form class="account-form" action="{% url 'accounts:login' %}" method="post">
+        {% csrf_token %}
+        {{ login_form.as_p }}
+        <button class="login-btn btn-3" type="submit">Login</button>
+        <button data-linkto="forgot_password" class="content-option-button btn-4 login-btn">Forgot password?</button>
+        <button data-linkto="register" class="content-option-button btn-4 login-btn">Register</button>
+    </form>
+</div>

@@ -1,0 +1,16 @@
+{% extends 'components/atomic/modal-template.html' %}
+
+{% block modal_open %}
+    <button class="modal-open nav-btn">
+        <ion-icon name="add-circle-outline"></ion-icon>
+        <p>Tweet</p>
+    </button>
+{% endblock %}
+
+{% block modal_content_body %}
+    {% include 'components/atomic/forms/write-post-form.html' %}
+{% endblock %}
+
+{% block modal_content_footer %}
+{% endblock %}
+

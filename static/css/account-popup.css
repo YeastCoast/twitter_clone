@@ -1,0 +1,47 @@
+.account-popup {
+    flex-direction: column;
+    width: 600px;
+    height: 650px;
+    align-items: center;
+    padding: 20px;
+}
+
+.account-popup h1 {
+    font-size: 38px;
+}
+
+.account-form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 30px;
+}
+
+.btn-3 {
+    cursor: pointer;
+    background-color: #222222;
+    color: #fff;
+}
+
+.btn-3:hover {
+    background-color: #3b3b3b;
+}
+
+.btn-4 {
+    cursor: pointer;
+    background-color: #fff;
+    color: #222222;
+}
+
+.btn-4:hover {
+    background-color: #e5e5e5;
+}
+
+.login-btn {
+    font-size: 20px;
+    border-radius: 28px;
+    width: 100%;
+    flex: 0 0 36px;
+}
+
+.

@@ -1,0 +1,6 @@
+{% url 'user_main_page' as url %}
+
+<a class="nav-btn {% if request.path == url %}active{% endif %}" href="{{ url }}">
+    <ion-icon name="planet-outline"></ion-icon>
+    <p>Home</p>
+</a>

@@ -1,0 +1,8 @@
+<form class="write-wrapper" action="{% url 'posts:comment_post' %}" method="post">
+    {% csrf_token %}
+    <div class="input-wrapper">
+                <textarea class="user-textarea" placeholder="Add your senf" name="content"
+                          contenteditable></textarea>
+    </div>
+    <button name="submit" value="{{ content.id }}" class="btn-2" type="submit">Reply</button>
+</form>
