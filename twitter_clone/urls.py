@@ -15,20 +15,28 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import MainPageView, SettingsPageView, UserMainPage, UserPostDetailView, UserSearchView, TestView, UserProfileView
+from .views import MainPageView, SettingsPageView, UserMainPage, UserPostDetailView, UserSearchView, TestView, \
+    UserProfileView, UserMainPageFollowing
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("accounts/", include("accounts.urls")),
+    path("user/", include("user_profile.urls")),
+    path('posts/', include('posts.urls')),
     path('', MainPageView.as_view(), name='main_page'),
     path('settings/', SettingsPageView.as_view(), name='settings_page'),
-    path("accounts/", include("accounts.urls")),
     path("accounts/", include("django.contrib.auth.urls")),
     path('home/', login_required(UserMainPage.as_view(), login_url='main_page'), name='user_main_page'),
-    path('posts/', include('posts.urls')),
+    path('home/following', login_required(UserMainPageFollowing.as_view(), login_url='main_page'), name='user_main_page/following'),
     path('post/<int:pk>/', UserPostDetailView.as_view(), name='post_detail'),
     path("__reload__/", include("django_browser_reload.urls")),
     path('home/search', login_required(UserSearchView.as_view(), login_url='main_page'), name='user_search'),
     path('test/', TestView.as_view(), name='testing'),
     path('profile/<int:pk>/', UserProfileView.as_view(), name='user_profile'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

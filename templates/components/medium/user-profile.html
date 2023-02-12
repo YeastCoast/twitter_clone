@@ -1,26 +1,52 @@
 <section class="user-profile-wrapper">
-    <h1>{{ user.username }}</h1>
-    <p>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
-        diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-        takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-        diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-        accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-        dolor sit amet.
+    <div style="background-image: url('/media/{{ profile.profile_banner }}')" class="profile-banner">
+        <div style="background-image: url('/media/{{ profile.profile_image }}')" class="user-profile-image">
+        </div>
+    </div>
 
-        Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu
-        feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril
-        delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
 
-        Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea
-        commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel
-        illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent
-        luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+    <div class="user-profile-info-wrapper">
+        <div class="profile-social-1">
+            {% if user.id != request.user.id and request.user.is_authenticated %}
+                <button class="notify element-switch btn-1">
+                    {% if not notfied %}
+                        <ion-icon name="notifications-outline" class="active"></ion-icon>
+                        <ion-icon name="notifications-off-outline" class=""></ion-icon>
+                    {% else %}
+                        <ion-icon name="notifications-outline" class=""></ion-icon>
+                        <ion-icon name="notifications-off-outline" class="active"></ion-icon>
+                    {% endif %}
+                </button>
+                <button value="{{ user.id }}" class="follow-btn element-switch">
+                    {% if not followed %}
+                        <span class="follow-span active">Follow</span>
+                        <span class="unfollow-span">Unfollow</span>
+                    {% else %}
+                        <span class="follow-span">Follow</span>
+                        <span class="unfollow-span active">Unfollow</span>
+                    {% endif %}
+                </button>
+            {% endif %}
+        </div>
+        <div class="profile-username">
+            <h1>{{ user.username }}</h1>
+            <h3>@{{ user.username }}</h3>
+        </div>
+        <div class="profile-bio">
+            <p>{{ profile.profile_bio }}</p>
+        </div>
+        <div class="profile-social-2">
+            {% if profile.url is not None %}
+                <a>Website {{ profile.profile_url }}</a>
+            {% endif %}
+            <time>Joined {{ user.date_joined }}</time>
+        </div>
+        <div class="profile-social-3">
+            <p><span>{{ profile.profile_following }}</span> Following{{ profile.profile_following|pluralize:",s" }}</p>
+            <p><span>{{ profile.profile_followers }}</span> Follower{{ profile.profile_followers|pluralize:",s" }}</p>
 
-        Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer
-    </p>
+        </div>
+    </div>
+
+
 </section>

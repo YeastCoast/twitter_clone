@@ -1,7 +1,3 @@
-.content-main {
-    padding-right: 20px;
-}
-
 .user-content-sub {
     box-sizing: border-box;
     display: flex;
@@ -89,6 +85,12 @@
 .content-main-stats {
     display: flex;
     gap: 20px;
+}
+
+.retweet {
+    box-shadow: 0 0 10px 4px #fafafa;
+    border-radius: 20px;
+    border: none;
 }
 
 .retweet:hover {

@@ -1,0 +1,15 @@
+{% extends 'components/pages/base.html' %}
+
+{% block navbar %}
+    {% include 'components/small/navbar/main-navbar.html' %}
+{% endblock %}
+
+{% block main %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ profile_settings.as_p }}
+        <button type="submit" class="btn-3">
+            Submit
+        </button>
+    </form>
+{% endblock %}

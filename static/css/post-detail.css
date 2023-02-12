@@ -21,6 +21,7 @@
     align-items: center;
     justify-content: start;
     gap: 10px;
+    padding-right: 6%;
 }
 
 .detail-post-user {

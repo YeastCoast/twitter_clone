@@ -52,3 +52,8 @@
 #user-post-wrapper {
     border-bottom: 1px solid lightgrey;
 }
+
+.user-post-wrapper > .tweet {
+    justify-self: end;
+    align-self: end;
+}

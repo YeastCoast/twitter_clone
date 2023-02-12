@@ -1,13 +1,5 @@
 {% extends 'components/pages/base.html' %}
 
-{% block navbar %}
-    {% if user.is_authenticated %}
-        {% include 'components/small/navbar/user-navbar.html' %}
-    {% else %}
-        {% include 'components/small/navbar/main-navbar.html' %}
-    {% endif %}
-{% endblock %}
-
 {% block main %}
     {% include 'components/small/headers/header-user-page.html' %}
     <section class="content-main">

@@ -51,7 +51,7 @@
 {% endwith %}
 
 {% for content in commentstable_set %}
-    {% with content=content content_user=content.user_id %}
+    {% with content=content content_user=content.user_id retweet=None retweet_user=None %}
         {% include 'components/medium/post-sub.html' %}
     {% endwith %}
 {% endfor %}

@@ -1,4 +1,4 @@
-{% url 'profile_placeholder' as url %}
+{% url 'user_profile:settings' as url %}
 
 <a class="{% if request.path == url %}active{% endif %} nav-btn" href="{{ url }}">
     <ion-icon name="person-outline"></ion-icon>

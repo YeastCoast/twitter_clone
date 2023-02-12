@@ -1,0 +1,5 @@
+.tabs li a.active {
+    color: #ff6018;
+    background-color: #eaeaea;
+    box-shadow: 0 0 20px 4px #fafafa;
+}

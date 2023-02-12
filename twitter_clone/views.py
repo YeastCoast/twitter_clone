@@ -5,10 +5,24 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, DetailView, ListView
 
 from posts.models import PostsTable, LikesTable, CommentsTable
+from user_profile.models import UserProfilePublicData, UserFollowTable
 
 
 def popular_posts():
     posts = PostsTable.objects.filter(primary=True).select_related('user_id').order_by('-post_date')
+    context_feed = [{'content': i,
+                     'content_user': i.user_id,
+                     'retweet': i.retweet_id,
+                     'retweet_user': i.retweet_id.user_id if 'user_id' in dir(i.retweet_id) else None,
+                     }
+                    for i in posts]
+    return context_feed
+
+
+def user_posts(request):
+    following_user = [i.following for i in UserFollowTable.objects.filter(follower=request.user).select_related('following')]
+    print(following_user)
+    posts = PostsTable.objects.filter(primary=True, user_id__in=following_user).select_related('user_id').order_by('-post_date')
     context_feed = [{'content': i,
                      'content_user': i.user_id,
                      'retweet': i.retweet_id,
@@ -38,6 +52,16 @@ class UserMainPage(TemplateView):
 
     def get_context_data(self, **kwargs):
         posts = popular_posts()
+        liked = LikesTable.objects.filter(user_id=self.request.user)
+        liked = [i['post_id_id'] for i in liked.values()]
+        return {'content_list': posts, 'liked': liked}
+
+
+class UserMainPageFollowing(TemplateView):
+    template_name = "components/pages/home.html"
+
+    def get_context_data(self, **kwargs):
+        posts = user_posts(self.request)
         liked = LikesTable.objects.filter(user_id=self.request.user)
         liked = [i['post_id_id'] for i in liked.values()]
         return {'content_list': posts, 'liked': liked}
@@ -80,6 +104,8 @@ class UserProfileView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(UserProfileView, self).get_context_data(**kwargs)
+        user_profile_data = UserProfilePublicData.objects.get(user_id=context.get('user').id)
         posts = PostsTable.objects.filter(user_id=context.get('user').id)
         context['content_list'] = posts
+        context['profile'] = user_profile_data
         return context

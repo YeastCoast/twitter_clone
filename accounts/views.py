@@ -4,14 +4,14 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+from django.http import HttpResponse
 
 
 class LoginView(generic.View):
 
     def post(self, request, *args, **kwargs):
         form = AuthenticationForm(request, request.POST)
-        print(request.POST)
-        print(form.data)
         if form.is_valid():
             user = authenticate(username=form.cleaned_data.get('username'),
                                 password=form.cleaned_data.get('password'))
@@ -23,9 +23,7 @@ class LoginView(generic.View):
 class RegisterView(generic.View):
 
     def post(self, request, *args, **kwargs):
-        print(request.POST)
         form = UserCreationForm(request.POST)
-        print(form.data)
         if form.is_valid():
             print('Form valid')
             form.save()

@@ -1,7 +1,9 @@
 <header id="user-top-nav">
     <h1>Homepage</h1>
     <ul class="tabs">
-        <li><a>Popular</a></li>
-        <li><a>For you</a></li>
+        {% url 'user_main_page' as url_pop %}
+        {% url 'user_main_page/following' as url_fol %}
+        <li><a class="{% if request.path == url_pop %}active{% endif %}" href="{{ url_pop }}">Popular</a></li>
+        <li><a class="{% if request.path == url_fol %}active{% endif %}" href="{{ url_fol }}">Following</a></li>
     </ul>
 </header>

@@ -1,0 +1,178 @@
+.user-profile-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 50px;
+    gap: 10px;
+}
+
+.profile-media {
+    width: 100%;
+}
+
+.profile-banner {
+    background-color: #9198e5;
+    background-size: 100% 100%;
+    width: 100%;
+    padding-bottom: 16%;
+}
+
+.user-profile-image {
+    background-color: #9198e5;
+    background-size: 100% 100%;
+    width: 17.5%;
+    padding-bottom: 17.5%;
+    z-index: 2;
+    border: 5px solid #fff;
+    position: relative;
+    transform: translate(18%, 132.5%);
+    border-radius: 20%;
+}
+
+.user-profile-info-wrapper {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 0 10px;
+    gap: 20px;
+}
+
+.profile-social-1 {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 0 30px;
+    align-items: center;
+    justify-content: end;
+    padding: 5px 0;
+    gap: 10px;
+}
+
+.notify {
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 28px;
+    border: 1px solid #222222;
+
+}
+
+.notify ion-icon {
+    font-size: 24px;
+    height: inherit;
+    width: inherit;
+    border-radius: inherit;
+    box-sizing: border-box;
+}
+
+.notify > .active {
+    display: table;
+}
+
+.follow-btn.active {
+    background-color: #222222;
+    color: #fff;
+}
+
+.follow-btn {
+    box-sizing: border-box;
+    border: 1px solid #222222;
+    cursor: pointer;
+    color: #222222;
+    background-color: inherit;
+    border-radius: 24px;
+    width: 120px;
+    height: 100%;
+    font-size: 20px;
+    text-align: left;
+    display: block;
+}
+
+.follow-btn > * {
+    box-sizing: border-box;
+    padding: 4px 12px;
+    text-align: center;
+    line-height: inherit;
+}
+
+.element-switch > * {
+    height: 100%;
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.element-switch.follow-btn > .active {
+    display: flex;
+}
+
+.unfollow-span {
+    border-radius: inherit;
+    background-color: #222222;
+    color: #fff;
+}
+
+.unfollow-span:hover {
+    border-radius: inherit;
+    background-color: inherit;
+    color: #222222;
+}
+
+.follow-span:hover {
+    border-radius: inherit;
+    background-color: #222222;
+    color: #fff;
+}
+
+.act-primary {
+    background-color: #222222;
+    border: 1px solid #222222;
+    color: #fff;
+}
+
+.act-primary:hover {
+    background-color: transparent;
+    border: 1px solid #222222;
+    color: #222222;
+}
+
+.non-act {
+    border: 1px solid #222222;
+}
+
+.non-act:hover {
+    background-color: #222222;
+    color: #fff;
+}
+
+.btn-6 {
+    background-color: inherit;
+}
+
+.btn-6:hover {
+    background-color: inherit;
+}
+
+.profile-username {
+    padding-top: 10px;
+}
+
+.profile-username > h1 {
+    font-size: 32px;
+}
+
+.profile-social-2 {
+    display: flex;
+    gap: 10px;
+}
+
+.profile-social-3 {
+    display: flex;
+    gap: 20px;
+}

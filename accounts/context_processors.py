@@ -8,4 +8,3 @@ def login_form(request):
         'register_form': UserCreationForm(),
         'password_reset_form': auth_forms.PasswordResetForm,
     }
-
